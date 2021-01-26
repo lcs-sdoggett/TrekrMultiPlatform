@@ -18,7 +18,7 @@ struct TipsList: View {
             
             // If there are children on this tip
             if tip.children != nil {
-                Label(tip.text, systemImage: "quote.bubbles")
+                Label(tip.text, systemImage: "quote.bubble")
             } else {
                 Text(tip.text)
             }
