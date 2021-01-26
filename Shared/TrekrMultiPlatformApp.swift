@@ -25,6 +25,7 @@ struct TrekrMultiPlatformApp: App {
                     Text("Locations")
                 }
                 
+                #if os(iOS)
                 NavigationView {
                     WorldMap(store: store)
                 }
@@ -32,7 +33,18 @@ struct TrekrMultiPlatformApp: App {
                     Image(systemName: "map")
                     Text("Map")
                 }
+                #else
+                NavigationView {
+                    WorldMap(store: store)
+                        .frame(width: 400)
+                }
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Map")
+                }
+                #endif
                 
+                #if os(iOS)
                 NavigationView {
                     TipsList()
                 }
@@ -40,7 +52,13 @@ struct TrekrMultiPlatformApp: App {
                     Image(systemName: "person.fill.questionmark")
                     Text("Tips")
                 }
-
+                #else
+                TipsList()
+                    .tabItem {
+                        Image(systemName: "person.fill.questionmark")
+                        Text("Tips")
+                    }
+                #endif
                 
                 
                 
